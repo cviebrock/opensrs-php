@@ -26,7 +26,7 @@ class openSRS_base extends PEAR {
 
 	var $VERSION				= 'XML:0.1';
 
-	var $base_class_version		= '2.8.0';
+	var $base_class_version		= '2.8.1';
 
 	var $environment			= 'TEST';	/* 'TEST' or 'LIVE' or 'HRS' */
 	var $protocol				= 'XCP';	/* 'XCP' or 'TPP' */
