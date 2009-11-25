@@ -1,126 +1,70 @@
-OpenSRS-PHP
-A PHP class to facilitate communicatation with OpenSRS' servers
+OpenSRS-PHP - A PHP-based client class that communicates with the OpenSRS API
+
+Website: http://opensrs-php.sourceforge.net/
 
 Copyright (c) 2000-2009 Colin Viebrock, HM2K
 
+################################################################################
 
-
+--------------------------------------------------------------------------------
 HISTORY
--------
+--------------------------------------------------------------------------------
 
-See CHANGELOG for version history
+See CHANGELOG file for version history
 
-
-
+--------------------------------------------------------------------------------
 LICENSE
--------
+--------------------------------------------------------------------------------
 
-This library is free software; you can redistribute it and/or    
-modify it under the terms of the GNU Lesser General Public   
-License as published by the Free Software Foundation; either
-version 2.1 of the License, or (at your option) any later version.
+See LICENSE file for license details
 
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public
-License along with this library; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
-
-
+--------------------------------------------------------------------------------
 REQUIREMENTS
-------------
-
-The base class requires:
+--------------------------------------------------------------------------------
 
 An account with the OpenSRS Registry (http://www.opensrs.net/)
 
-PHP (http://www.php.net)
-    The class is developed using the latest version of PHP, often the
-    CVS version current as of the date of this file.  It is almost
-    certainly not backwards compatible to 3.x versions, nor is it
-    going to be.  PHP 4 offers so much more functionality and stability
-    over PHP 3 that I encourage you to upgrade.
-    
-    It requires that support be compiled in for:
-		- PEAR extensions (use "--with-pear")
-		- the mcrypt library (use "--with-mcrypt"), as recent a stable
-          version as you can get (2.4.18 or higher should be safe)
-        - expat XML functions (use "--with-xml" and "--with-expat-dir=DIR"
-          if you don't want to use the bundled Expat library)
-		- Perl regular expressions (compiled by default, but use 
-          "--with-pcre-regex=DIR" if you don't want the bundled PCRE library)
+PHP 4 or 5 (http://www.php.net/)
++ PEAR extension
++ mcrypt library
++ expat XML
++ Perl regular expressions (pcre)
++ Crypt_CBC PEAR package
 
-    PEAR is part of current PHP releases, but will eventually be found 
-    separately at http://pear.php.net/.  Once PEAR is installed, you will need
-    to install the Crypt_CBC package: http://pear.php.net/Crypt_CBC
+--------------------------------------------------------------------------------
+INSTALL
+--------------------------------------------------------------------------------
 
-    mcrypt libraries can be found at http://mcrypt.hellug.gr/lib/ or 
-    Freshmeat.
-    
-    PCRE libraries and James Clark's expat are bundled with PHP 4.x.  If you
-    don't want the bundled libraries, you can get them from Sourceforge at
-    http://pcre.sourceforge.net/ and http://expat.sourceforge.net/
-    
+Just unzip and untar the archive, or do both in one step:
 
-
-INSTALLATION
-------------
-
-Just gunzip and untar the archive, or do both in one step:
-
-$ untar xvfz opensrs-php-x.x.tar.gz
+$ unzip opensrs-php-*.zip
 
 You will end up with the following files:
 
-    opensrs/CHANGELOG              - version history
-    opensrs/LICENSE                - a copy of the LGPL
-    opensrs/OPS.php                - the OPS message protocol class
-    opensrs/README                 - this file
-    opensrs/TODO                   - stuff to do
-    opensrs/country_codes.php      - list of 2 and 3 letter ISO country codes
-    opensrs/openSRS.php.default    - a sample extended class (edit the file 
+    CHANGELOG              - version history
+    LICENSE                - a copy of the LGPL
+    OPS.php                - the OPS message protocol class
+    README                 - this file
+    TODO                   - stuff to do
+    country_codes.php      - list of 2 and 3 letter ISO country codes
+    openSRS.php.default    - a sample extended class (edit the file 
                                      and remove the ".default" before using!)
-    opensrs/openSRS_base.php       - the base class file
-    opensrs/ops.dtd                - the OPS DTD file (not really needed)
-    opensrs/test.php               - a test PHP script
-    opensrs/test.xml               - some test XML data (not really needed)
-
-You will also need to make sure the Crypt_CBC class is installed using PEAR.
-Read the instructions at http://pear.php.net/ for the latest info on how 
-to do that.
+    openSRS_base.php       - the base class file
+    ops.dtd                - the OPS DTD file (not really needed)
+    test.php               - a test PHP script
+    test.xml               - some test XML data (not really needed)
 
 After configuring the default class (see below), try running the test.php 
-script in your browser.  It should connect to OpenSRS, do a lookup, and 
+script in your browser. It should connect to OpenSRS, do a lookup, and 
 output the session log.
 
-
-
-BASIC USAGE
------------
+--------------------------------------------------------------------------------
+USAGE
+--------------------------------------------------------------------------------
 
 Your first step should be to create a child class that extends the base
 class, basically setting up your OpenSRS username, private keys, and
-whether you want to use the test environment or live one.  Something like:
-
-<?php
-
-require_once 'openSRS_base.php';
-
-class openSRS extends openSRS_base {
-	var $USERNAME         = 'foobar';            # your OpenSRS username
-    var $TEST_PRIVATE_KEY = '1234567890abcdef';  # your private key on the test (horizon) server
-    var $LIVE_PRIVATE_KEY = 'abcdef1234567890';  # your private key on the live server
-    var $environment      = 'TEST';              # 'TEST' or 'LIVE'
-    var $crypt_type       = 'DES';               # 'DES' or 'BLOWFISH';
-    var $ext_version      = 'Foobar';            # anything you want
-}
-
-?>
-
+whether you want to use the test environment or live one.
 
 There is a sample file called "openSRS.php.default" in this distribution.  Just
 edit the values in it, and rename it "openSRS.php".
@@ -158,16 +102,13 @@ Or (for the truly hardcore) the raw binary log:
 
 There is also:
 
-	$O->validate($data, [$params] );
+	$O->validate($data, [$params]);
 
 This validates the data in $data for new domain registrations.  See the original
 OpenSRS code for full details on it's usage.  It may or may not work: I've never
 used it, personally.
 
-
-
 EMAIL AND WEB CERTS
--------------------
 
 If you are planning on using the class to do email or web certs, which use the 
 TPP protocol, then you have three ways to do so:
@@ -185,10 +126,7 @@ use TPP by default:
 
     $O = new openSRS('LIVE','TPP');
 
-
-
 OPENHRS
--------
 
 OpenHRS (http://resellers.tucows.com/openhrs/) is basically OpenSRS's let-
 us-manage-your-registry product.  It uses the same communication protocols 
@@ -224,11 +162,11 @@ of TEST or LIVE:
 
 All the OpenHRS commands you send should be identical to OpenSRS commands.
                
+--------------------------------------------------------------------------------
+CREDITS
+--------------------------------------------------------------------------------
 
-
-THANKS
-------
-
+- Colin Viebrock who developed this project until 2004.
 - Mike Glover <mpg4@duluoz.net> for providing the CBC emulation functions 
   and general help
 - Victor Magdic at Tucows Inc. <vmagdic@tucows.com> who wrote the original
@@ -239,4 +177,3 @@ THANKS
   most of the client development
 - all the users who've suggested changes or provided bug fixes
 - anyone else I forgot
-
