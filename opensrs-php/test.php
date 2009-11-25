@@ -8,7 +8,7 @@ $cmd = array(
         'action'        => 'lookup',
         'object'        => 'domain',
         'attributes'    => array(
-                'domain'        => 'domain.com',
+                'domain'        => 'example.com',
                 'affiliate_id'  => '12345'
         )
 );

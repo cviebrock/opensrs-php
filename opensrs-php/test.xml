@@ -15,7 +15,7 @@
     <item key="registrant_ip">111.121.121.121</item>
     <item key="attributes">
      <dt_assoc>
-      <item key="domain">www.foobar.com</item>
+      <item key="domain">www.example.com</item>
       <item key="affiliate_id">12121</item>
      </dt_assoc>
     </item>
