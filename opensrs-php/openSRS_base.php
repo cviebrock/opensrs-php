@@ -6,8 +6,8 @@
  *
  * Copyright (C) 2000-2004 Colin Viebrock
  *
- * Version 3.0.0
- *   xx-xxx-xxxx
+ * Version 2.8.0
+ *   15-Dec-2004
  *
  **************************************************************************
  *
@@ -28,7 +28,7 @@
  **************************************************************************
  *
  * vim: set expandtab tabstop=4 shiftwidth=4:
- * $Id: openSRS_base.php,v 1.21 2004/12/07 20:22:20 cviebrock Exp $
+ * $Id: openSRS_base.php,v 1.16.2.4 2004/12/07 20:27:22 cviebrock Exp $
  *
  **************************************************************************
  */
@@ -60,7 +60,7 @@ class openSRS_base extends PEAR {
 
 	var $VERSION				= 'XML:0.1';
 
-	var $base_class_version		= '2.7.3';
+	var $base_class_version		= '2.8.0';
 
 	var $environment			= 'TEST';	/* 'TEST' or 'LIVE' or 'HRS' */
 	var $protocol				= 'XCP';	/* 'XCP' or 'TPP' */
@@ -96,7 +96,7 @@ class openSRS_base extends PEAR {
 
 	var $_CRYPT;
 	var $_iv;
-	var $crypt_type				= 'BLOWFISH';				/* 'DES' or 'BLOWFISH' or 'SSL' */
+	var $crypt_type				= 'BLOWFISH';			/* 'DES' or 'BLOWFISH' or 'SSL' */
 	var $crypt_mode				= 'CBC';				/* only 'CBC' */
 	var $crypt_rand_source		= MCRYPT_DEV_URANDOM;	/* or MCRYPT_DEV_RANDOM or MCRYPT_RAND */
 	var $affiliate_id;
@@ -431,25 +431,25 @@ class openSRS_base extends PEAR {
 
 		$required_contact_fields = array (
 			'first_name'	=> 'First Name',
-			'last_name'	=> 'Last Name',
-			'org_name'	=> 'Organization Name',
-			'address1'	=> 'Address1',
-			'city'		=> 'City',
-			'country'	=> 'Country',
-			'phone'		=> 'Phone',
-			'email'		=> 'E-Mail'
-			);
+			'last_name'		=> 'Last Name',
+			'org_name'		=> 'Organization Name',
+			'address1'		=> 'Address1',
+			'city'			=> 'City',
+			'country'		=> 'Country',
+			'phone'			=> 'Phone',
+			'email'			=> 'E-Mail'
+		);
 
 		$contact_types = array (
 			'owner'		=> '',
 			'billing'	=> 'Billing'
-			);
+		);
 
 		$required_fields = array (
 			'reg_username'	=> 'Username',
 			'reg_password'	=> 'Password',
 			'domain'	=> 'Domain',
-			);
+		);
 
 		if (isset($params['custom_tech_contact'])) {
 			$contact_types['tech'] = 'Tech';
@@ -647,7 +647,7 @@ class openSRS_base extends PEAR {
 
 		$prompt = $this->read_data();
 
-		if ( $prompt['response_code'] == 555 ) {
+		if (isset($prompt['response_code']) && $prompt['response_code'] == 555 ) {
 			# the ip address from which we are connecting is not accepted
 			return array(
 				'is_success'	=> false,
@@ -862,10 +862,10 @@ class openSRS_base extends PEAR {
 			$this->_log('i',$data);
 		} else {
 			$data = $this->_CBC ? $this->_CBC->decrypt($buf) : $buf;
-			if (!$args['no_xml']) {
+			if (!isset($args['no_xml'])) {
 				$data = $this->_OPS->decode($data);
 			}
-			if ($args['binary']) {
+			if (isset($args['binary'])) {
 				$temp = unpack('H*temp', $data);
 				$this->_log('r', 'BINARY: ' . $temp['temp'] );
 			} else {
@@ -884,7 +884,7 @@ class openSRS_base extends PEAR {
 
 	function send_data($message, $args=array()) {
 
-		if (!$args['no_xml']) {
+		if (!isset($args['no_xml'])) {
 			$message['protocol'] = $this->protocol;
 			$data_to_send = $this->_OPS->encode( $message );
 
@@ -898,7 +898,7 @@ class openSRS_base extends PEAR {
 			$data_to_send = $message;
 		}
 
-		if ($args['binary']) {
+		if (isset($args['binary'])) {
 			$temp = unpack('H*temp', $message);
 			$this->_log('s', 'BINARY: ' . $temp['temp'] );
 		} else {

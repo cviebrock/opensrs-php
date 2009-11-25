@@ -4,6 +4,7 @@ CHANGELOG
 Version 2.8.1
 25-Nov-2009
 	- cviebrock added hm2k to the PHP OpenSRS Client project
+	- improved base formatting and added better error checking for PHP5 compat
 
 
 Version 2.8.0
