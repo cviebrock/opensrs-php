@@ -254,7 +254,7 @@ class OPS extends PEAR {
 	 *
 	 * @param	int 		socket handle
 	 *
-	 * @return	mixed 		true if the socket is ok, error otherwise
+	 * @return	mixed 		null if the socket is ok, error otherwise
 	 *
 	 */
 
@@ -276,7 +276,7 @@ class OPS extends PEAR {
 			return $this->raiseError( OPS_ERROR_EOF );
 		}
 
-		return OPS_OK;
+		//return OPS_OK;
 
 	}
 
