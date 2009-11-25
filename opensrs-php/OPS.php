@@ -377,14 +377,16 @@ class OPS extends PEAR {
 				break;
 
 			  case 'item':
-				$key = $value['attributes']['key'];
+				//$key = $value['attributes']['key'];
 
 				switch ($value['type']) {
 				  case 'open':
+				  $key = $value['attributes']['key'];
 					array_push($depth, $key);
 					break;
 
 				  case 'complete':
+				  $key = $value['attributes']['key'];
 					array_push($depth, $key);
 					$p = join('::',$depth);
 					$temp[$p] = $value['value'];
