@@ -478,7 +478,7 @@ class OPS extends PEAR {
 			$this->_OUTPUT_INDENT . '<body>' . $this->_OUTPUT_LF .
 			$xml_data_block . $this->_OUTPUT_LF .
 			$this->_OUTPUT_INDENT . '</body>' . $this->_OUTPUT_LF .
-			'</OPS_envelope>';
+			'</OPS_envelope>'; // <?php // highlighting fix
 
 		# log it
 
