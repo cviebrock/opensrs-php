@@ -1,7 +1,7 @@
 OpenSRS-PHP
 A PHP class to facilitate communicatation with OpenSRS' servers
 
-Copyright 2000-2004 Colin Viebrock
+Copyright (c) 2000-2009 Colin Viebrock, HM2K
 
 
 
@@ -223,7 +223,7 @@ of TEST or LIVE:
     $O = new openSRS('HRS');
 
 All the OpenHRS commands you send should be identical to OpenSRS commands.
-
+               
 
 
 THANKS
@@ -235,20 +235,8 @@ THANKS
   Perl API
 - Jason Slaughter at Tucows for the SSL-method code
 - the rest of the folks at OpenSRS (Ross, Dan, Charles, Erol, et al)
-- easyDNS <www.easydns.com>, my previous employer which "funded" most of 
-  the client development
+- easyDNS <www.easydns.com>, Colin Viebrock's previous employer which "funded" 
+  most of the client development
 - all the users who've suggested changes or provided bug fixes
 - anyone else I forgot
-   
 
-
-CONTACT
--------
-
-Colin Viebrock
-email: colin at viebrock dot ca
-web:   http://viebrock.ca
-
-
-
-/* $Id: README,v 1.23 2005/02/25 21:16:58 cviebrock Exp $ */

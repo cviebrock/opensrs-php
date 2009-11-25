@@ -5,6 +5,9 @@ Version 2.8.1
 25-Nov-2009
 	- cviebrock added hm2k to the PHP OpenSRS Client project
 	- improved base formatting and added better error checking for PHP5 compat
+	- corrected documentation
+	- removed file headers and vim/cvs comments
+	- removed Colin Viebrock's contact information from the README
 
 
 Version 2.8.0
@@ -146,8 +149,3 @@ Version 0.2
 Version 0.1
 20-Jul-2000
 	- first release, non-functional
-
-
-
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
-/* $Id: CHANGELOG,v 1.27 2005/02/25 21:16:58 cviebrock Exp $  */
