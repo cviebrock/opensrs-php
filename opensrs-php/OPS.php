@@ -389,7 +389,8 @@ class OPS extends PEAR {
 				  $key = $value['attributes']['key'];
 					array_push($depth, $key);
 					$p = join('::',$depth);
-					$temp[$p] = $value['value'];
+					//$temp[$p] = $value['value'];
+					$temp[$p] = (isset($value['value']) ? $value['value'] : NULL);
 					array_pop($depth);
 					break;
 

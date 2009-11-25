@@ -10,7 +10,7 @@ Version 2.8.1
 	- removed Colin Viebrock's contact information from the README
 	- fixed OPENSRS_TLDS_REGEX private variable called within a function(#1818577)
 	- now using example.com to be compliant with RFC 2606
-	- a few minor fixes for OPS.php
+	- a few minor fixes for OPS.php including PHP5 compat fixes
 
 
 Version 2.8.0

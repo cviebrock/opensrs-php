@@ -367,7 +367,8 @@ class openSRS_base extends PEAR {
 			return $data;
 		}
 
-		$request['registrant_ip'] = $HTTP_SERVER_VARS['REMOTE_ADDR'];
+		//$request['registrant_ip'] = $HTTP_SERVER_VARS['REMOTE_ADDR'];
+		$request['registrant_ip'] = (isset($HTTP_SERVER_VARS['REMOTE_ADDR']) ? $HTTP_SERVER_VARS['REMOTE_ADDR'] : '');
 
 		if ( strstr($request['action'], 'lookup') ) {
 			# lookups are treated specially 
@@ -786,9 +787,10 @@ class openSRS_base extends PEAR {
 				$data['response_code']	= $answer['response_code'];
 				$data['response_text']	= $answer['response_text'];
 				$data['attributes']['status'] = $answer['attributes']['status'];
-				$data['attributes']['upg_to_subdomain'] = $answer['attributes']['upg_to_subdomain'];
-				$data['attributes']['reason'] = $answer['attributes']['reason'];
-
+				//$data['attributes']['upg_to_subdomain'] = $answer['attributes']['upg_to_subdomain'];
+				//$data['attributes']['reason'] = $answer['attributes']['reason'];
+        $data['attributes']['upg_to_subdomain'] = isset($answer['attributes']['upg_to_subdomain'])?$answer['attributes']['upg_to_subdomain']:NULL;
+        $data['attributes']['reason'] = isset($answer['attributes']['upg_to_subdomain'])?$answer['attributes']['reason']:NULL;
 			}
 		}
 
