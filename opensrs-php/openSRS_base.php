@@ -914,7 +914,7 @@ class openSRS_base extends PEAR {
 
 		if (strlen($domain) > $maxLengthForThisCase) {
 			return "Domain name exceeds maximum length for registry ($maxLengthForThisCase)";
-		} else if (!preg_match('/'.$OPENSRS_TLDS_REGEX.'$/', $domain)) {
+		} else if (!preg_match('/'.$this->OPENSRS_TLDS_REGEX.'$/', $domain)) {
 			return "Top level domain in \"$domain\" is unavailable";
 		} else if (!preg_match('/^[a-zA-Z0-9][.a-zA-Z0-9\-]*[a-zA-Z0-9]'.$this->OPENSRS_TLDS_REGEX.'$/', $domain)) {
 			return "Invalid domain format (try something similar to \"yourname.com\")";

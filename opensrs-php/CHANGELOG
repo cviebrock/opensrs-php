@@ -8,6 +8,8 @@ Version 2.8.1
 	- corrected documentation
 	- removed file headers and vim/cvs comments
 	- removed Colin Viebrock's contact information from the README
+	- fixed OPENSRS_TLDS_REGEX private variable called within a function(#1818577)
+	
 
 
 Version 2.8.0
