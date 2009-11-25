@@ -4,4 +4,5 @@ TODO LIST
   and make this just a streamlined connection class
 - PUNY/ACE encoding (although I doubt this gets much use)
 - complete PEAR-ification and PHPDoc documentation
-- test
+- PHPUnit testing
+- provide better openSRS.php example
