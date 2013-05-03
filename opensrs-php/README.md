@@ -1,71 +1,68 @@
-OpenSRS-PHP - A PHP-based client class that communicates with the OpenSRS API
+# OpenSRS-PHP
+
+A PHP-based client class that communicates with the OpenSRS API
 
 Copyright (c) 2000-2009 Colin Viebrock
 
-################################################################################
 
---------------------------------------------------------------------------------
-HISTORY
---------------------------------------------------------------------------------
+## HISTORY
 
-See CHANGELOG file for version history
+See CHANGELOG.md file for version history
 
---------------------------------------------------------------------------------
-LICENSE
---------------------------------------------------------------------------------
+
+## LICENSE
 
 See LICENSE file for license details
 
---------------------------------------------------------------------------------
-REQUIREMENTS
---------------------------------------------------------------------------------
 
-An account with the OpenSRS Registry (http://www.opensrs.net/)
+## REQUIREMENTS
 
-PHP 4 or 5 (http://www.php.net/)
-+ PEAR extension
-+ mcrypt library
-+ expat XML
-+ Perl regular expressions (pcre)
-+ Crypt_CBC PEAR package
+An account with the OpenSRS Registry: <http://www.opensrs.net/>
 
---------------------------------------------------------------------------------
-INSTALL
---------------------------------------------------------------------------------
+PHP 4 or 5 <http://www.php.net/> with:
+
+- PEAR extension
+- mcrypt library
+- expat XML
+- Perl regular expressions (pcre)
+- Crypt_CBC PEAR package
+
+
+## INSTALL
 
 Just unzip and untar the archive, or do both in one step:
 
+```
 $ unzip opensrs-php-*.zip
+```
 
 You will end up with the following files:
 
-    CHANGELOG              - version history
-    LICENSE                - a copy of the LGPL
-    OPS.php                - the OPS message protocol class
-    README                 - this file
-    TODO                   - stuff to do
-    country_codes.php      - list of 2 and 3 letter ISO country codes
-    openSRS.php.default    - a sample extended class (edit the file
-                                     and remove the ".default" before using!)
-    openSRS_base.php       - the base class file
-    ops.dtd                - the OPS DTD file (not really needed)
-    test.php               - a test PHP script
-    test.xml               - some test XML data (not really needed)
+- `CHANGELOG.md` - version history
+- `LICENSE` - a copy of the LGPL
+- `OPS.php` - the OPS message protocol class
+- `README.md` - this file
+- `TODO.md` - stuff to do
+- `country_codes.php` - list of 2 and 3 letter ISO country codes
+- `openSRS.php.default` - a sample extended class (edit the file and remove the ".default" before using!)
+- `openSRS_base.php` - the base class file
+- `ops.dtd` - the OPS DTD file (not really needed)
+- `test.php` - a test PHP script
+- `test.xml` - some test XML data (not really needed)
 
 After configuring the default class (see below), try running the test.php
 script in your browser. It should connect to OpenSRS, do a lookup, and
 output the session log.
 
---------------------------------------------------------------------------------
-USAGE
---------------------------------------------------------------------------------
+
+## USAGE
 
 Your first step should be to create a child class that extends the base
 class, basically setting up your OpenSRS username, private keys, and
 whether you want to use the test environment or live one.
 
-There is a sample file called "openSRS.php.default" in this distribution.  Just
-edit the values in it, and rename it "openSRS.php".
+There is a sample file called `openSRS.php.default` in this distribution.  Just
+edit the values in it, and rename it `openSRS.php`.
 
 With this file, you just need to include() or require() it at the top of every
 file in which you want to talk to the OpenSRS server.
@@ -106,7 +103,8 @@ This validates the data in $data for new domain registrations.  See the original
 OpenSRS code for full details on it's usage.  It may or may not work: I've never
 used it, personally.
 
-EMAIL AND WEB CERTS
+
+## EMAIL AND WEB CERTS
 
 If you are planning on using the class to do email or web certs, which use the
 TPP protocol, then you have three ways to do so:
@@ -124,15 +122,17 @@ use TPP by default:
 
     $O = new openSRS('LIVE','TPP');
 
-OPENHRS
 
-OpenHRS (http://resellers.tucows.com/openhrs/) is basically OpenSRS's let-
+## OPENHRS
+
+OpenHRS <http://resellers.tucows.com/openhrs/> is basically OpenSRS's let-
 us-manage-your-registry product.  It uses the same communication protocols
 as OpenSRS, so there are only a few things you need to do to the OpenSRS-PHP
 class to connect and talk to the OpenHRS system.
 
 First, you need to add a few more parameters to the child class:
 
+```php
 <?php
 
 require_once 'openSRS_base.php';
@@ -152,6 +152,7 @@ class openSRS extends openSRS_base {
 }
 
 ?>
+```
 
 From there, you proceed as normal, except you will use the HRS environment instead
 of TEST or LIVE:
@@ -160,9 +161,8 @@ of TEST or LIVE:
 
 All the OpenHRS commands you send should be identical to OpenSRS commands.
 
---------------------------------------------------------------------------------
-CREDITS
---------------------------------------------------------------------------------
+
+## CREDITS
 
 - Colin Viebrock who developed this project until 2004.
 - Mike Glover <mpg4@duluoz.net> for providing the CBC emulation functions
